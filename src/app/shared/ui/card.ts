@@ -15,40 +15,47 @@ import { RouterLink } from '@angular/router';
     MatMenuModule,
   ],
   template: `
-    <mat-card class="card" [routerLink]="cardInfo().path">
-      <mat-card-header>
+    <mat-card class="card" [routerLink]="cardInfo().path" appearance="outlined">
+      <mat-card-header class="header">
         <mat-card-title>
           {{ cardInfo().title }}
         </mat-card-title>
+        <mat-card-subtitle>{{ cardInfo().subtitle }}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content class="card-content">
+      <mat-card-content class="content">
+        @if (cardInfo().content) {
         {{ cardInfo().content }}
+        } @else if (cardInfo().svgUrl) {
+        <img [src]="cardInfo().svgUrl" />
+        }
       </mat-card-content>
     </mat-card>
   `,
   styles: `
     .card {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
       cursor: pointer;
-      &-content {
-        text-align: center;
+      overflow: hidden;
+      .header {
+        padding-bottom: 1rem;
       }
-      .more-button {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-      }  
-    }
+      .content {
+        background-color: #fff;
+        img {
+          width: 100%;
+          height: 250px;
+          object-fit: contain;
+        }
+      }
+}
+
   `,
 })
 export class Card {
   readonly cardInfo = input.required<{
     path: string;
     title: string;
-    content: string;
+    subtitle: string;
+    svgUrl?: string;
+    content?: string;
   }>();
 }

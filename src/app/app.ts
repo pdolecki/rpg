@@ -15,5 +15,12 @@ import { Navigation } from './shell/navigation';
   `,
 })
 export class App {
-  protected readonly navItems: NavItem[] = [{ label: 'Home', path: '/home' }];
+  protected readonly navItems: NavItem[] = [
+    { label: 'Strona główna', path: '/home' },
+    { label: 'Rozwój postaci', path: '/development' },
+    { label: 'Profesje', path: '/professions' },
+    { label: 'Cechy wyposażenia', path: '/qualities' },
+    { label: 'Stany', path: '/states' },
+    { label: 'Talenty', path: '/talents' },
+  ];
 }

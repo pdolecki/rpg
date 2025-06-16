@@ -5,19 +5,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ThemeToggle } from './theme/theme-toggle';
-import { RouterLink,  } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { NavItem } from '../shared/interfaces/nav-item';
 
 @Component({
   selector: 'app-navigation',
   imports: [
+    RouterLink,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
     MatListModule,
     ThemeToggle,
-    RouterLink,
   ],
   template: `
     <div class="navigation">
@@ -33,8 +33,14 @@ import { NavItem } from '../shared/interfaces/nav-item';
             <mat-list-item>
               <app-theme-toggle></app-theme-toggle>
             </mat-list-item>
+
             @for (navItem of navItems(); track navItem.path) {
-            <a mat-list-item [routerLink]="navItem.path">{{ navItem.label }}</a>
+              <a
+                mat-list-item
+                [routerLink]="navItem.path"
+                (click)="snav.close()"
+                >{{ navItem.label }}</a
+              >
             }
           </mat-nav-list>
         </mat-sidenav>
