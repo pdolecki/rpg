@@ -1,9 +1,10 @@
 @use "@angular/material" as mat;
 
 :root {
+  --color-primary: var(--mat-sys-inverse-primary);
   @include mat.card-overrides(
     (
-      outlined-outline-color: var(--mat-sys-inverse-primary),
+      outlined-outline-color: var(--color-primary),
       outlined-outline-width: 2px,
     )
   );
@@ -20,7 +21,7 @@ html {
   );
 }
 
-body.dark-mode {
+html.dark-mode {
   color-scheme: dark;
 }
 

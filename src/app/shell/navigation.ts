@@ -5,13 +5,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ThemeToggle } from './theme/theme-toggle';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NavItem } from '../shared/interfaces/nav-item';
 
 @Component({
   selector: 'app-navigation',
   imports: [
     RouterLink,
+    RouterLinkActive,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -30,17 +31,18 @@ import { NavItem } from '../shared/interfaces/nav-item';
       <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #snav class="sidenav-list">
           <mat-nav-list>
-            <mat-list-item>
+            <mat-list-item (click)="snav.close()">
               <app-theme-toggle></app-theme-toggle>
             </mat-list-item>
 
             @for (navItem of navItems(); track navItem.path) {
-              <a
-                mat-list-item
-                [routerLink]="navItem.path"
-                (click)="snav.close()"
-                >{{ navItem.label }}</a
-              >
+            <a
+              mat-list-item
+              [routerLink]="navItem.path"
+              routerLinkActive="active"
+              (click)="snav.close()"
+              >{{ navItem.label }}</a
+            >
             }
           </mat-nav-list>
         </mat-sidenav>
@@ -64,6 +66,9 @@ import { NavItem } from '../shared/interfaces/nav-item';
         flex: 1;
         .sidenav-list {
           max-width: 100%;
+          .active {
+            background-color: var(--color-primary);
+          }
         }
         .sidenav-content {
           padding: 1rem;

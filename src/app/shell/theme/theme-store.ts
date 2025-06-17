@@ -9,7 +9,7 @@ export class ThemeStore {
   constructor() {
     effect(() => {
       const darkMode = this.darkMode();
-      document.body.classList.toggle('dark-mode', darkMode);
+      document.documentElement.classList.toggle('dark-mode', darkMode);
       localStorage.setItem('darkMode', String(darkMode));
     });
   }

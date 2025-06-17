@@ -1,4 +1,4 @@
-# 💸 Crpt – KAS Portfolio Tracker
+# 🧙 RPG – Table Top RPG Assistant
 
 Live Demo: https://pd-crpt.netlify.app/portfolio
 
