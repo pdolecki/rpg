@@ -1,4 +1,4 @@
-import { Talent } from "../interfaces/talent";
+import { Talent } from "../interfaces/features";
 
 export const TALENTS: Talent[] = [
   {

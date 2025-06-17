@@ -1,4 +1,4 @@
-import { State } from "../interfaces/state";
+import { State } from "../interfaces/features";
 
 export const STATES: State[] = [
   {
