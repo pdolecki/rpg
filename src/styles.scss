@@ -8,6 +8,19 @@
       outlined-outline-width: 2px,
     )
   );
+  @include mat.expansion-overrides(
+    (
+      header-indicator-color: var(--color-primary),
+    )
+  );
+  @include mat.form-field-overrides(
+    (
+      trailing-icon-color: var(--color-primary),
+      outlined-caret-color: var(--color-primary),
+      outlined-focus-outline-color: var(--color-primary),
+      outlined-outline-color: var(--color-primary),
+    )
+  );
 }
 
 html {
