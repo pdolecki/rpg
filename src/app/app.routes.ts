@@ -14,22 +14,22 @@ export const routes: Routes = [
   {
     path: 'professions',
     loadComponent: () =>
-      import('./features/professions/professions').then((m) => m.default),
+      import('./features/lists/professions').then((m) => m.default),
   },
   {
     path: 'qualities',
     loadComponent: () =>
-      import('./features/qualities/qualities').then((m) => m.default),
+      import('./features/lists/qualities').then((m) => m.default),
   },
   {
     path: 'states',
     loadComponent: () =>
-      import('./features/states/states').then((m) => m.default),
+      import('./features/lists/states').then((m) => m.default),
   },
   {
     path: 'talents',
     loadComponent: () =>
-      import('./features/talents/talents').then((m) => m.default),
+      import('./features/lists/talents').then((m) => m.default),
   },
   {
     path: 'heroes',

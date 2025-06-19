@@ -1,13 +1,30 @@
-import { Component } from '@angular/core';
-import { Card } from '../../shared/ui/card';
+import { Component, inject } from '@angular/core';
+import { RainEffect } from '../../shared/ui/rain-effect';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { HeroDialog } from './hero-dialog';
 
 @Component({
   selector: 'app-heroes',
-  imports: [Card],
+  imports: [RainEffect, MatCardModule, MatDialogModule],
   template: `
+    <app-rain-effect></app-rain-effect>
     <div class="heroes">
       @for (card of cards; track card.title) {
-      <app-card [cardInfo]="card"></app-card>
+      <mat-card
+        class="card"
+        appearance="filled"
+        (click)="openDialog(card.title, card.description)"
+      >
+        <mat-card-header class="header">
+          <mat-card-title>
+            {{ card.title }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="content">
+          <img [src]="card.url" />
+        </mat-card-content>
+      </mat-card>
       }
     </div>
   `,
@@ -17,42 +34,79 @@ import { Card } from '../../shared/ui/card';
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1rem;
+      .card {
+        cursor: pointer;
+        overflow: hidden;
+        .header {
+          padding-bottom: 1rem;
+        }
+        .content {
+          img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+          }
+        }
+     }
     }
   `,
 })
 export default class Heroes {
+  readonly dialog = inject(MatDialog);
+
   protected readonly cards = [
     {
       title: 'Victor',
-      svgUrl: '/heroes/victor.png',
+      url: '/heroes/victor.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Ervar',
-      svgUrl: '/heroes/ervar.png',
+      url: '/heroes/ervar.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Joshua',
-      svgUrl: '/heroes/joshua.png',
+      url: '/heroes/joshua.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Muriel',
-      svgUrl: '/heroes/muriel.png',
+      url: '/heroes/muriel.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Astrid & Jacob',
-      svgUrl: '/heroes/astrid-jacob.png',
+      url: '/heroes/astrid-jacob.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Theo & Edgar',
-      svgUrl: '/heroes/theo-edgar.png',
+      url: '/heroes/theo-edgar.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Brielli',
-      svgUrl: '/heroes/brielli.png',
+      url: '/heroes/brielli.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
     {
       title: 'Bashir',
-      svgUrl: '/heroes/bashir.png',
+      url: '/heroes/bashir.png',
+      description: 'Tutaj będzie krótka historia postaci... kiedyś',
     },
   ];
+
+  openDialog(title: string, description: string) {
+    const dialogRef = this.dialog.open(HeroDialog, {
+      data: {
+        title,
+        description,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('test');
+    });
+  }
 }
