@@ -3,35 +3,18 @@ import { Quality } from '../../shared/interfaces/features';
 import { Search } from '../../shared/ui/search';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { QUALITIES } from '../../shared/constants/qualities';
+import { ExpandableList } from '../../shared/ui/expandable-list';
 
 @Component({
   selector: 'app-qualities',
-  imports: [MatExpansionModule, Search],
+  imports: [MatExpansionModule, Search, ExpandableList],
   template: `
     <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
-    <mat-accordion>
-      @for (quality of filteredQualities(); track $index) {
-      <mat-expansion-panel class="expansion-panel">
-        <mat-expansion-panel-header class="header">
-          <mat-panel-title>{{ quality.name }}</mat-panel-title>
-        </mat-expansion-panel-header>
 
-        <ng-template [matExpansionPanelContent]>
-          <mat-panel-description>
-            {{ quality.description }}
-          </mat-panel-description>
-        </ng-template>
-      </mat-expansion-panel>
-      }
-    </mat-accordion>
-  `,
-  styles: `
-  .expansion-panel {
-    .header {
-      height: fit-content;
-      padding: 1rem;
-    }
-  }
+    <app-expandable-list
+      [items]="qualities()"
+      [searchTerm]="searchTerm()"
+    ></app-expandable-list>
   `,
 })
 export default class Qualitites {

@@ -3,47 +3,33 @@ import { Talent } from '../../shared/interfaces/features';
 import { Search } from '../../shared/ui/search';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TALENTS } from '../../shared/constants/talents';
+import { ExpandableList } from '../../shared/ui/expandable-list';
 
 @Component({
   selector: 'app-talents',
-  imports: [MatExpansionModule, Search],
+  imports: [MatExpansionModule, Search, ExpandableList],
   template: `
     <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
-    <mat-accordion>
-      @for (talent of filteredTalents(); track $index) {
-      <mat-expansion-panel class="expansion-panel">
-        <mat-expansion-panel-header class="header">
-          <mat-panel-title>{{ talent.name }}</mat-panel-title>
-        </mat-expansion-panel-header>
 
-        <ng-template [matExpansionPanelContent]>
-          <mat-panel-description>
-            {{ talent.description }}
-          </mat-panel-description>
+    <app-expandable-list
+      [items]="talents()"
+      [searchTerm]="searchTerm()"
+      [itemTemplate]="detailsTemplate"
+    ></app-expandable-list>
 
-          @if(talent.max) {
-          <section class="section">
-            <h3>Max:</h3>
-            <p>{{ talent.max }}</p>
-          </section>
-          } @if(talent.tests) {
-          <section class="section">
-            <h3>Testy:</h3>
-            <p>{{ talent.tests }}</p>
-          </section>
-          }
-        </ng-template>
-      </mat-expansion-panel>
+    <ng-template #detailsTemplate let-talent>
+      @if(talent.max) {
+      <section>
+        <h3>Max:</h3>
+        <p>{{ talent.max }}</p>
+      </section>
+      } @if(talent.tests) {
+      <section>
+        <h3>Testy:</h3>
+        <p>{{ talent.tests }}</p>
+      </section>
       }
-    </mat-accordion>
-  `,
-  styles: `
-  .expansion-panel {
-    .header {
-      height: fit-content;
-      padding: 1rem;
-    }
-  }
+    </ng-template>
   `,
 })
 export default class Talents {
