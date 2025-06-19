@@ -20,7 +20,10 @@ import { RouterLink } from '@angular/router';
         <mat-card-title>
           {{ cardInfo().title }}
         </mat-card-title>
+        @if(cardInfo().subtitle) {
+
         <mat-card-subtitle>{{ cardInfo().subtitle }}</mat-card-subtitle>
+        }
       </mat-card-header>
       <mat-card-content class="content">
         @if (cardInfo().content) {
@@ -46,15 +49,14 @@ import { RouterLink } from '@angular/router';
           object-fit: contain;
         }
       }
-}
-
+    }
   `,
 })
 export class Card {
   readonly cardInfo = input.required<{
-    path: string;
+    path?: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     svgUrl?: string;
     content?: string;
   }>();

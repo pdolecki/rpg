@@ -9,27 +9,34 @@ import { ExpandableList } from '../../shared/ui/expandable-list';
   selector: 'app-states',
   imports: [MatExpansionModule, Search, ExpandableList],
   template: `
-    <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
+    <div class="states">
+      <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
 
-    <app-expandable-list
-      [items]="states()"
-      [searchTerm]="searchTerm()"
-      [itemTemplate]="detailsTemplate"
-    ></app-expandable-list>
+      <app-expandable-list
+        [items]="states()"
+        [searchTerm]="searchTerm()"
+        [itemTemplate]="detailsTemplate"
+      ></app-expandable-list>
 
-    <ng-template #detailsTemplate let-state>
-      @if(state.neutralization) {
-      <section>
-        <h3>Neutralizowanie:</h3>
-        <p>{{ state.neutralization }}</p>
-      </section>
-      } @if(state.consequences) {
-      <section>
-        <h3>Konsekwencje:</h3>
-        <p>{{ state.consequences }}</p>
-      </section>
-      }
-    </ng-template>
+      <ng-template #detailsTemplate let-state>
+        @if(state.neutralization) {
+        <section>
+          <h3>Neutralizowanie:</h3>
+          <p>{{ state.neutralization }}</p>
+        </section>
+        } @if(state.consequences) {
+        <section>
+          <h3>Konsekwencje:</h3>
+          <p>{{ state.consequences }}</p>
+        </section>
+        }
+      </ng-template>
+    </div>
+  `,
+  styles: `
+  .states {
+    padding-bottom: 5rem;
+  }
   `,
 })
 export default class States {

@@ -9,12 +9,19 @@ import { ExpandableList } from '../../shared/ui/expandable-list';
   selector: 'app-qualities',
   imports: [MatExpansionModule, Search, ExpandableList],
   template: `
-    <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
+    <div class="qualities">
+      <app-search (searchTermChange)="searchTerm.set($event)"></app-search>
 
-    <app-expandable-list
-      [items]="qualities()"
-      [searchTerm]="searchTerm()"
-    ></app-expandable-list>
+      <app-expandable-list
+        [items]="qualities()"
+        [searchTerm]="searchTerm()"
+      ></app-expandable-list>
+    </div>
+  `,
+  styles: `
+    .qualities {
+      padding-bottom: 5rem;
+    }
   `,
 })
 export default class Qualitites {

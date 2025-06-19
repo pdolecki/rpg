@@ -11,16 +11,15 @@ import { Navigation } from './shell/navigation';
       <router-outlet />
     </app-navigation>
   `,
-  styles: `
-  `,
 })
 export class App {
   protected readonly navItems: NavItem[] = [
     { label: 'Strona główna', path: '/home' },
     { label: 'Rozwój postaci', path: '/development' },
-    { label: 'Profesje', path: '/professions' },
+    { label: 'Lista Profesji', path: '/professions' },
+    { label: 'Lista Stanów', path: '/states' },
+    { label: 'Lista Talentów', path: '/talents' },
     { label: 'Cechy wyposażenia', path: '/qualities' },
-    { label: 'Stany', path: '/states' },
-    { label: 'Talenty', path: '/talents' },
+    { label: 'Bohaterowie', path: '/heroes' },
   ];
 }

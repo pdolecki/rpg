@@ -32,6 +32,11 @@ export const routes: Routes = [
       import('./features/talents/talents').then((m) => m.default),
   },
   {
+    path: 'heroes',
+    loadComponent: () =>
+      import('./features/heroes/heroes').then((m) => m.default),
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',
