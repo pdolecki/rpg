@@ -3,26 +3,29 @@ import { RainEffect } from '../../shared/ui/rain-effect';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { HeroDialog } from './hero-dialog';
+import { NgOptimizedImage } from '@angular/common';
+import { HEROES } from '../../shared/constants/heroes';
+import { Hero } from '../../shared/interfaces/features';
 
 @Component({
   selector: 'app-heroes',
-  imports: [RainEffect, MatCardModule, MatDialogModule],
+  imports: [NgOptimizedImage, RainEffect, MatCardModule, MatDialogModule],
   template: `
     <app-rain-effect></app-rain-effect>
     <div class="heroes">
-      @for (card of cards; track card.title) {
+      @for (hero of heroes; track hero.name) {
       <mat-card
         class="card"
         appearance="filled"
-        (click)="openDialog(card.title, card.description)"
+        (click)="openDialog(hero.name, hero.description)"
       >
         <mat-card-header class="header">
           <mat-card-title>
-            {{ card.title }}
+            {{ hero.name }}
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="content">
-          <img [src]="card.url" />
+          <img [ngSrc]="hero.url" fill priority />
         </mat-card-content>
       </mat-card>
       }
@@ -41,61 +44,17 @@ import { HeroDialog } from './hero-dialog';
           padding-bottom: 1rem;
         }
         .content {
-          img {
-            width: 100%;
-            height: 300px;
-            object-fit: contain;
-          }
+          position: relative;
+          height: 300px;
         }
      }
     }
   `,
 })
 export default class Heroes {
-  readonly dialog = inject(MatDialog);
+  protected readonly heroes: Hero[] = HEROES;
 
-  protected readonly cards = [
-    {
-      title: 'Victor',
-      url: '/heroes/victor.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Ervar',
-      url: '/heroes/ervar.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Joshua',
-      url: '/heroes/joshua.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Muriel',
-      url: '/heroes/muriel.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Astrid & Jacob',
-      url: '/heroes/astrid-jacob.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Theo & Edgar',
-      url: '/heroes/theo-edgar.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Brielli',
-      url: '/heroes/brielli.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-    {
-      title: 'Bashir',
-      url: '/heroes/bashir.png',
-      description: 'Tutaj będzie krótka historia postaci... kiedyś',
-    },
-  ];
+  readonly dialog = inject(MatDialog);
 
   openDialog(title: string, description: string) {
     const dialogRef = this.dialog.open(HeroDialog, {

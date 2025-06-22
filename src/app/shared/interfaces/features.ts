@@ -33,3 +33,7 @@ export interface ProfessionPath {
 export interface ProfessionRequirement {
   [level: number]: string[];
 }
+
+export interface Hero extends NamedEntity {
+  url: string;
+}

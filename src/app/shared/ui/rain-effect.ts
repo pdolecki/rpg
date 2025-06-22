@@ -78,7 +78,7 @@ export class RainEffect {
 
   private setupAudio(): void {
     this.rainAudio.loop = true;
-    this.rainAudio.volume = 0.3;
+    this.rainAudio.volume = 0.4;
 
     this.miauAudio.loop = true;
     this.miauAudio.volume = 0.5;
@@ -93,7 +93,7 @@ export class RainEffect {
 
     if (!this.rainAudio.onplaying)
       this.rainAudio.play().catch(() => console.warn('Rain blocked'));
-    else if (!this.miauAudio.onplaying)
+    if (!this.miauAudio.onplaying)
       this.miauAudio.play().catch(() => console.warn('Miau blocked'));
 
     this.destroyRef.onDestroy(() => {
