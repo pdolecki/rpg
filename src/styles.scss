@@ -2,6 +2,7 @@
 
 :root {
   --color-primary: var(--mat-sys-inverse-primary);
+  --color-background: var(--mat-sys-inverse-on-surface);
   @include mat.card-overrides(
     (
       outlined-outline-color: var(--color-primary),

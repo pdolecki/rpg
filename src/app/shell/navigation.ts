@@ -71,7 +71,7 @@ import { NavItem } from '../shared/interfaces/nav-item';
           }
         }
         .sidenav-content {
-          padding: 0 1rem;
+          padding: 1rem;
         }
       }
     }

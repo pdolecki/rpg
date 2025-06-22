@@ -22,6 +22,12 @@ import { NgTemplateOutlet } from '@angular/common';
       </mat-expansion-panel>
       }
     </mat-accordion>
+    <span class="spacer"></span>
+  `,
+  styles: `
+    .spacer {
+      padding: 1rem;
+    }
   `,
 })
 export class ExpandableList<T extends NamedEntity> {

@@ -25,7 +25,7 @@ import { Hero } from '../../shared/interfaces/features';
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="content">
-          <img [ngSrc]="hero.url" fill priority />
+          <img [ngSrc]="hero.url" width="350" height="400" priority />
         </mat-card-content>
       </mat-card>
       }
@@ -44,8 +44,8 @@ import { Hero } from '../../shared/interfaces/features';
           padding-bottom: 1rem;
         }
         .content {
-          position: relative;
-          height: 300px;
+          display: flex;
+          justify-content: center;
         }
      }
     }
