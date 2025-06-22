@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+import { CardInfo } from '../interfaces/card-info';
 
 @Component({
   selector: 'app-card',
@@ -53,11 +54,5 @@ import { RouterLink } from '@angular/router';
   `,
 })
 export class Card {
-  readonly cardInfo = input.required<{
-    path?: string;
-    title: string;
-    subtitle?: string;
-    svgUrl?: string;
-    content?: string;
-  }>();
+  readonly cardInfo = input.required<CardInfo>();
 }

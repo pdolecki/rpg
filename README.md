@@ -1,6 +1,6 @@
 # 🧙 RPG – Table Top RPG Assistant
 
-Live Demo: https://pd-crpt.netlify.app/portfolio
+Live Demo: https://pd-rpg.netlify.app
 
 **Crpt** is a lightweight Angular 20 application for helping players manage and research Warhammer Fantasy RPG 4th Edition gameplay. It uses modern Angular features and applies best practises in architecture, Angular Material, and performance.
 
