@@ -1,12 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
-import {
-  ATTRIBUTES_UPGRADE_COSTS,
-  SKILLS_UPGRADE_COSTS,
-} from '../../shared/constants/development';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ATTRIBUTES_UPGRADE_COSTS, SKILLS_UPGRADE_COSTS } from '../../shared/constants/development';
 
 @Component({
   selector: 'app-development',

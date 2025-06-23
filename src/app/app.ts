@@ -1,20 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavItem } from './shared/interfaces/nav-item';
 import { Navigation } from './shell/navigation';
-import { Loading } from './shared/data-access/loading';
+import { LoadingStore } from './shared/data-access/loading-store';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthStore } from './shared/data-access/auth-store';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatProgressSpinnerModule, Navigation],
   template: `
-    @if (loading.isLoading()) {
+    @if (loadingStore.isLoading()) {
     <div class="loader">
       <mat-spinner></mat-spinner>
     </div>
     }
-    <app-navigation [navItems]="navItems">
+    <app-navigation [navItems]="navItems" [isLoggedIn]="isLoggedIn()">
       <router-outlet />
     </app-navigation>
   `,
@@ -32,14 +33,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   `,
 })
 export class App {
-  protected readonly loading = inject(Loading);
+  protected readonly authStore = inject(AuthStore);
+  protected readonly loadingStore = inject(LoadingStore);
   protected readonly navItems: NavItem[] = [
     { label: 'Strona główna', path: '/home' },
-    { label: 'Rozwój postaci', path: '/development' },
-    { label: 'Lista Profesji', path: '/professions' },
-    { label: 'Lista Stanów', path: '/states' },
-    { label: 'Lista Talentów', path: '/talents' },
-    { label: 'Cechy wyposażenia', path: '/qualities' },
-    { label: 'Bohaterowie', path: '/heroes' },
+    { label: 'Rozwój postaci', path: '/features/development' },
+    { label: 'Lista Profesji', path: '/features/professions' },
+    { label: 'Lista Stanów', path: '/features/states' },
+    { label: 'Lista Talentów', path: '/features/talents' },
+    { label: 'Cechy wyposażenia', path: '/features/qualities' },
+    { label: 'Bohaterowie', path: '/features/heroes' },
   ];
+
+  protected readonly isLoggedIn = computed(() => !!this.authStore.user());
 }

@@ -4,7 +4,7 @@ import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rout
 @Injectable({
   providedIn: 'root',
 })
-export class Loading {
+export class LoadingStore {
  readonly isLoading = signal(false);
 
   constructor() {

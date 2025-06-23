@@ -1,0 +1,30 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /professions/{profession} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if false;
+    }
+    match /qualities/{quality} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if false;
+    }
+    match /talents/{talent} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if false;
+    }
+    match /states/{state} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+
+  function isAuthenticated() {
+    return request.auth != null;
+  }
+}

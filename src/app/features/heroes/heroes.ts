@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { RainEffect } from '../../shared/ui/rain-effect';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { HeroDialog } from './hero-dialog';
+import { Dialog } from '../../shared/ui/dialog';
 import { NgOptimizedImage } from '@angular/common';
+import { RainEffect } from '../../shared/ui/rain-effect';
 import { HEROES } from '../../shared/constants/heroes';
 import { Hero } from '../../shared/interfaces/features';
 
@@ -57,7 +57,7 @@ export default class Heroes {
   readonly dialog = inject(MatDialog);
 
   openDialog(title: string, description: string) {
-    const dialogRef = this.dialog.open(HeroDialog, {
+    const dialogRef = this.dialog.open(Dialog, {
       data: {
         title,
         description,

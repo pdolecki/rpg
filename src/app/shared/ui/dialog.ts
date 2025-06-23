@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-hero-dialog',
+  selector: 'app-dialog',
   imports: [MatDialogModule, MatButtonModule],
   template: `
     <h2 mat-dialog-title>{{ data.title }}</h2>
@@ -18,7 +18,7 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
   `,
   styles: ``,
 })
-export class HeroDialog {
+export class Dialog {
   protected readonly data = inject<{ title: string; description: string }>(
     MAT_DIALOG_DATA
   );
