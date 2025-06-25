@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Profession } from '../../shared/interfaces/features';
-import { PROFESSIONS } from '../../shared/constants/professions';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
+import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-professions',
@@ -43,7 +43,8 @@ import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-
   `,
 })
 export default class Professions {
-  protected readonly professions = signal<Profession[]>(PROFESSIONS);
+  protected readonly featuresFacade = inject(FeaturesFacade);
+  protected readonly professions = this.featuresFacade.professions;
 
   protected getLevels(profession: Profession): number[] {
     return Object.keys(profession.requirements)

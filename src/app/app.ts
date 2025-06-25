@@ -44,6 +44,5 @@ export class App {
     { label: 'Cechy wyposażenia', path: '/features/qualities' },
     { label: 'Bohaterowie', path: '/features/heroes' },
   ];
-
   protected readonly isLoggedIn = computed(() => !!this.authStore.user());
 }

@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Dialog } from '../../shared/ui/dialog';
 import { NgOptimizedImage } from '@angular/common';
 import { RainEffect } from '../../shared/ui/rain-effect';
-import { HEROES } from '../../shared/constants/heroes';
+import { HEROES } from '../../shared/mocks/heroes';
 import { Hero } from '../../shared/interfaces/features';
 
 @Component({

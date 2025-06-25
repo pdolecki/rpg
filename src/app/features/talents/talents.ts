@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { Talent } from '../../shared/interfaces/features';
-import { TALENTS } from '../../shared/constants/talents';
+import { Component, inject } from '@angular/core';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
+import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-talents',
@@ -28,5 +27,6 @@ import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-
   `,
 })
 export default class Talents {
-  protected readonly talents = signal<Talent[]>(TALENTS);
+  protected readonly featuresFacade = inject(FeaturesFacade);
+  protected readonly talents = this.featuresFacade.talents;
 }

@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { Quality } from '../../shared/interfaces/features';
-import { QUALITIES } from '../../shared/constants/qualities';
+import { Component, inject } from '@angular/core';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
+import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-qualities',
@@ -13,5 +12,6 @@ import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-
   `,
 })
 export default class Qualitites {
-  protected readonly qualities = signal<Quality[]>(QUALITIES);
+  protected readonly featuresFacade = inject(FeaturesFacade);
+  protected readonly qualities = this.featuresFacade.qualities;
 }

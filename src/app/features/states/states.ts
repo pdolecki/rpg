@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { State } from '../../shared/interfaces/features';
-import { STATES } from '../../shared/constants/states';
+import { Component, inject } from '@angular/core';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
+import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-states',
@@ -28,5 +27,6 @@ import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-
   `,
 })
 export default class States {
-  protected readonly states = signal<State[]>(STATES);
+  protected readonly featuresFacade = inject(FeaturesFacade);
+  protected readonly states = this.featuresFacade.states;
 }
