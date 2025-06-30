@@ -1,4 +1,9 @@
-import { Component, effect, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+} from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterModule } from '@angular/router';
 import { LoginForm } from './ui/login-form';
@@ -7,6 +12,9 @@ import { AuthStore } from '../../shared/data-access/auth-store';
 
 @Component({
   selector: 'app-login',
+  imports: [RouterModule, LoginForm, MatProgressSpinnerModule],
+  providers: [LoginStore],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="login">
       @if(authStore.user() === null) {
@@ -19,8 +27,6 @@ import { AuthStore } from '../../shared/data-access/auth-store';
       }
     </div>
   `,
-  providers: [LoginStore],
-  imports: [RouterModule, LoginForm, MatProgressSpinnerModule],
   styles: `
       .login {
         height: 100%;

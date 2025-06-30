@@ -1,9 +1,10 @@
 import { NgStyle } from '@angular/common';
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 
 @Component({
   selector: 'app-rain-effect',
   imports: [NgStyle],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="rain-container">
       @for (drop of drops; track $index) {

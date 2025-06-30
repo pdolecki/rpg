@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
 import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-qualities',
   imports: [ExpandableSearchableList],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-expandable-searchable-list
       [items]="qualities()"

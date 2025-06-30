@@ -1,4 +1,4 @@
-import { Component, computed, input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, TemplateRef } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NamedEntity } from '../interfaces/features';
 import { NgTemplateOutlet } from '@angular/common';
@@ -6,6 +6,7 @@ import { NgTemplateOutlet } from '@angular/common';
 @Component({
   selector: 'app-expandable-list',
   imports: [MatExpansionModule, NgTemplateOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mat-accordion>
       @for (item of filteredItems(); track item.name) {

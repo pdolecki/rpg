@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +15,7 @@ import { CardInfo } from '../interfaces/card-info';
     MatButtonModule,
     MatMenuModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mat-card class="card" [routerLink]="cardInfo().path" appearance="outlined">
       <mat-card-header class="header">

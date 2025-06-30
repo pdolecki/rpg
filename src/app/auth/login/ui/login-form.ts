@@ -4,6 +4,7 @@ import {
   output,
   inject,
   ResourceStatus,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +16,15 @@ import { Credentials } from '../../../shared/interfaces/credentials';
 
 @Component({
   selector: 'app-login-form',
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <form
       [formGroup]="loginForm"
@@ -56,14 +66,6 @@ import { Credentials } from '../../../shared/interfaces/credentials';
       </button>
     </form>
   `,
-  imports: [
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-  ],
   styles: `
       form {
         display: flex;

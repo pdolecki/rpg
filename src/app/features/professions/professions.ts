@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Profession } from '../../shared/interfaces/features';
 import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
 import { FeaturesFacade } from '../../shared/data-access/features-facade';
@@ -6,6 +6,7 @@ import { FeaturesFacade } from '../../shared/data-access/features-facade';
 @Component({
   selector: 'app-professions',
   imports: [ExpandableSearchableList],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-expandable-searchable-list
       [items]="professions()"

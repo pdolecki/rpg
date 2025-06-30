@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Dialog } from '../../shared/ui/dialog';
@@ -10,6 +10,7 @@ import { Hero } from '../../shared/interfaces/features';
 @Component({
   selector: 'app-heroes',
   imports: [NgOptimizedImage, RainEffect, MatCardModule, MatDialogModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-rain-effect></app-rain-effect>
     <div class="heroes">

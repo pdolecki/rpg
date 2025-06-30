@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavItem } from './shared/interfaces/nav-item';
 import { Navigation } from './shell/navigation';
@@ -9,6 +9,7 @@ import { AuthStore } from './shared/data-access/auth-store';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatProgressSpinnerModule, Navigation],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (loadingStore.isLoading()) {
     <div class="loader">

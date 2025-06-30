@@ -1,19 +1,27 @@
-import { Component, computed, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  signal,
+} from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ATTRIBUTES_UPGRADE_COSTS, SKILLS_UPGRADE_COSTS } from '../../shared/mocks/development';
+import {
+  ATTRIBUTES_UPGRADE_COSTS,
+  SKILLS_UPGRADE_COSTS,
+} from '../../shared/mocks/development';
 
 @Component({
   selector: 'app-development',
-  standalone: true,
   imports: [
     MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="development">
       <mat-radio-group
@@ -51,7 +59,7 @@ import { ATTRIBUTES_UPGRADE_COSTS, SKILLS_UPGRADE_COSTS } from '../../shared/moc
       </mat-form-field>
 
       @if (totalCost() > 0) {
-        <span>Koszt: {{ totalCost() }} PD</span>
+      <span>Koszt: {{ totalCost() }} PD</span>
       }
     </div>
   `,

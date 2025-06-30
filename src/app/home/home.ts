@@ -1,11 +1,12 @@
 
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CardInfo } from '../shared/interfaces/card-info';
 import { Card } from '../shared/ui/card';
 
 @Component({
   selector: 'app-home',
   imports: [Card],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="home">
       @for (card of cards; track card.path) {

@@ -1,4 +1,4 @@
-import { Component, computed, input, signal, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal, TemplateRef } from '@angular/core';
 import { ExpandableList } from './expandable-list';
 import { Search } from './search';
 import { NamedEntity } from '../interfaces/features';
@@ -6,6 +6,7 @@ import { NamedEntity } from '../interfaces/features';
 @Component({
   selector: 'app-expandable-searchable-list',
   imports: [ExpandableList, Search],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-search (searchTermChange)="searchTerm.set($event)" />
 
