@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterModule } from '@angular/router';
-import { LoginForm } from './ui/login-form';
-import { LoginStore } from './data-access/login-store';
+import { LoginForm } from './login-form';
+import { LoginStore } from './login-store';
 import { AuthStore } from '../../shared/data-access/auth-store';
 
 @Component({

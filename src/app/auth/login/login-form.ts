@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import { Credentials } from '../../../shared/interfaces/credentials';
+import { Credentials } from '../../shared/interfaces/credentials';
 
 @Component({
   selector: 'app-login-form',
