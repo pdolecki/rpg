@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {
   ATTRIBUTES_UPGRADE_COSTS,
   SKILLS_UPGRADE_COSTS,
-} from '../../shared/mocks/development';
+} from '../shared/mocks/development';
 
 @Component({
   selector: 'app-development',

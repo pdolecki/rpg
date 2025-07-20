@@ -3,26 +3,26 @@ import { Route } from '@angular/router';
 export const FEATURES_ROUTES: Route[] = [
   {
     path: 'development',
-    loadComponent: () => import('./development/development'),
+    loadComponent: () => import('./development'),
   },
   {
     path: 'heroes',
-    loadComponent: () => import('./heroes/heroes'),
+    loadComponent: () => import('./heroes'),
   },
   {
     path: 'professions',
-    loadComponent: () => import('./professions/professions'),
+    loadComponent: () => import('./professions'),
   },
   {
     path: 'qualities',
-    loadComponent: () => import('./qualities/qualities'),
+    loadComponent: () => import('./qualities'),
   },
   {
     path: 'states',
-    loadComponent: () => import('./states/states'),
+    loadComponent: () => import('./states'),
   },
   {
     path: 'talents',
-    loadComponent: () => import('./talents/talents'),
+    loadComponent: () => import('./talents'),
   },
 ];
