@@ -4,7 +4,6 @@ import {
   effect,
   inject,
 } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterModule } from '@angular/router';
 import { LoginForm } from './login-form';
 import { LoginStore } from './login-store';
@@ -12,7 +11,7 @@ import { AuthStore } from '../../shared/data-access/auth-store';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule, LoginForm, MatProgressSpinnerModule],
+  imports: [RouterModule, LoginForm],
   providers: [LoginStore],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -22,8 +21,6 @@ import { AuthStore } from '../../shared/data-access/auth-store';
         [loginStatus]="loginStore.userAuthenticated.status()"
         (login)="loginStore.login$.next($event)"
       />
-      } @else {
-      <mat-spinner diameter="50"></mat-spinner>
       }
     </div>
   `,
