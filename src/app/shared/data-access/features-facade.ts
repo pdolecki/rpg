@@ -21,9 +21,8 @@ export class FeaturesFacade {
     const featureCollection = query(
       collection(this.firestore, collectionName),
       orderBy('name', 'asc'),
-      limit(100)
+      limit(300)
     );
-
     return toSignal(
       collectionData(featureCollection, { idField: 'id' }) as Observable<T[]>,
       { initialValue: [] }
