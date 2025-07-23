@@ -11,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {
   ATTRIBUTES_UPGRADE_COSTS,
   SKILLS_UPGRADE_COSTS,
-} from '../shared/mocks/development';
+} from '../../shared/mocks/development';
+import { DevelopmentTable } from './ui/development-table';
 
 @Component({
   selector: 'app-development',
@@ -20,6 +21,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    DevelopmentTable,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -61,6 +63,8 @@ import {
       @if (totalCost() > 0) {
       <span>Koszt: {{ totalCost() }} PD</span>
       }
+
+      <app-development-table></app-development-table>
     </div>
   `,
   styles: `

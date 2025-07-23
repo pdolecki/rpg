@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ExpandableSearchableList } from '../shared/ui/expandable-searchable-list';
-import { FeaturesFacade } from '../shared/data-access/features-facade';
+import { ExpandableSearchableList } from '../../shared/ui/expandable-searchable-list';
+import { FeaturesFacade } from '../../shared/data-access/features-facade';
 
 @Component({
   selector: 'app-states',
