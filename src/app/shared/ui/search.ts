@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,12 +29,5 @@ import { MatInputModule } from '@angular/material/input';
   `,
 })
 export class Search {
-  protected readonly searchTerm = signal<string>('');
-  readonly searchTermChange = output<string>();
-
-  constructor() {
-    effect(() => {
-      this.searchTermChange.emit(this.searchTerm());
-    });
-  }
+  readonly searchTerm = model<string>('');
 }

@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  TemplateRef,
+} from '@angular/core';
 import { ExpandableList } from './expandable-list';
 import { Search } from './search';
 import { NamedEntity } from '../interfaces/features';
@@ -8,11 +14,11 @@ import { NamedEntity } from '../interfaces/features';
   imports: [ExpandableList, Search],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-search (searchTermChange)="searchTerm.set($event)" />
+    <app-search [(searchTerm)]="searchTerm" />
 
     <app-expandable-list
       [items]="filteredItems()"
-      [searchTerm]="searchTerm()"
+      [searchTerm]="searchTerm"
       [itemTemplate]="itemTemplate()"
     />
   `,
@@ -21,10 +27,10 @@ export class ExpandableSearchableList<T extends NamedEntity> {
   readonly items = input.required<T[]>();
   readonly itemTemplate = input<TemplateRef<any>>();
 
-  protected readonly searchTerm = signal('');
+  protected readonly searchTerm = '';
   protected readonly filteredItems = computed(() =>
     this.items().filter((item) =>
-      item.name.toLowerCase().includes(this.searchTerm().toLowerCase())
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     )
   );
 }
